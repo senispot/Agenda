@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f4ef">
+  <meta name="description" content="Um espaço pessoal para transformar intenções em dias com propósito.">
+  <title>Life Atlas — o teu espaço</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <div class="identity"><div class="logo">A<span>·</span></div><div><strong>Life Atlas</strong><small>a life in progress</small></div></div>
+      <div class="sidebar-label">O TEU ESPAÇO</div>
+      <nav id="nav">
+        <button class="nav-item active" data-view="today"><span>◒</span> Hoje</button>
+        <button class="nav-item" data-view="calendar"><span>▦</span> Calendário</button>
+        <button class="nav-item" data-view="goals"><span>◎</span> Objetivos</button>
+        <button class="nav-item" data-view="library"><span>▤</span> Planos & guias</button>
+        <button class="nav-item" data-view="inbox"><span>✦</span> Ideias & listas</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-note">Não precisas de ser<br><em>apenas uma coisa.</em></div>
+        <button class="nav-item" data-view="settings"><span>⚙</span> Definições</button>
+        <a class="nav-item external" href="blog.html" target="_blank" rel="noopener"><span>↗</span> Blog público <span class="link-small">↗</span></a>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><div class="mobile-brand">A· <span>Life Atlas</span></div><div id="breadcrumb">O meu espaço / Hoje</div><div class="top-actions"><span class="sync-chip" id="syncStatus" title="Estado da sincronização">● Apenas neste dispositivo</span><button id="addButton" class="primary-btn">＋ Adicionar</button></div></header>
+      <main id="main" tabindex="-1"></main>
+      <nav class="mobile-nav" aria-label="Navegação móvel">
+        <button data-view="today" class="active"><span>◒</span><small>Hoje</small></button>
+        <button data-view="calendar"><span>▦</span><small>Agenda</small></button>
+        <button data-view="goals"><span>◎</span><small>Objetivos</small></button>
+        <button data-view="library"><span>▤</span><small>Guias</small></button>
+        <button data-view="inbox"><span>✦</span><small>Ideias</small></button>
+        <button data-view="settings"><span>⚙</span><small>Opções</small></button>
+      </nav>
+    </div>
+  </div>
+  <dialog id="editor" class="modal"><form id="editorForm" method="dialog"><div class="modal-header"><div><p class="eyebrow">CRIAR / EDITAR</p><h2 id="editorTitle">Nova tarefa</h2></div><button type="button" class="icon-button" id="closeEditor" aria-label="Fechar">✕</button></div>
+    <label>Tipo<select name="kind" id="kind"><option value="task">Tarefa / compromisso</option><option value="goal">Objetivo</option><option value="idea">Ideia / presente / receita</option></select></label>
+    <label>Título<input name="title" required maxlength="160" placeholder="O que queres fazer?"></label>
+    <div class="form-grid" id="taskFields"><label>Data<input name="date" type="date"></label><label>Hora (opcional)<input name="time" type="time"></label><label>Duração (min)<input name="minutes" type="number" min="5" max="600" value="40"></label></div>
+    <div class="form-grid"><label>Área<select name="category" id="categorySelect"></select></label><label>Prioridade<select name="priority"><option value="2">Normal</option><option value="3">Importante</option><option value="1">Flexível</option></select></label></div>
+    <label>Descrição / detalhes<textarea name="notes" rows="4" placeholder="O que é preciso fazer, passos, materiais, links..."></textarea></label>
+    <div class="modal-actions"><button type="button" class="light-btn" id="cancelEditor">Cancelar</button><button type="submit" class="primary-btn">Guardar</button></div>
+  </form></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
